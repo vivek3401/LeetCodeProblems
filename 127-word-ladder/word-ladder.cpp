@@ -7,19 +7,21 @@ public:
         st.erase(beginWord);
         while(!q.empty()){
             string word=q.front().first;
-            int steps=q.front().second;
+            int dis=q.front().second;
             q.pop();
-            if(word==endWord) return steps;
+            if(word==endWord){
+                return dis;
+            }
             for(int i=0;i<word.size();i++){
-                char original=word[i];
-                for(char ch ='a';ch<='z';ch++){
+                char c=word[i];
+                for(char ch='a';ch<='z';ch++){
                     word[i]=ch;
                     if(st.find(word)!=st.end()){
-                        q.push({word,steps+1});
+                        q.push({word,dis+1});
                         st.erase(word);
                     }
                 }
-                word[i]=original;
+                word[i]=c;
             }
         }
         return 0;
