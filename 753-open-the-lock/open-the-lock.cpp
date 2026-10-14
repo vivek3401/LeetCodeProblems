@@ -3,10 +3,11 @@ public:
     int openLock(vector<string>& deadends, string target) {
         unordered_set<string> st(deadends.begin(),deadends.end());
         unordered_set<string> vis;
-        
+    
         queue<pair<string,int>> q;
         string strt="0000";
         if(st.count(strt)) return -1;
+        if(strt==target) return 0;
         vis.insert(strt);
         q.push({strt,0});
         while(!q.empty()){
